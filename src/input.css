@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+.mytxt {
+  @apply text-xl md:text-3xl  my-1 border bg-yellow-400 rounded-lg p-5 hover:bg-yellow-600 text-red-800;
+}
+@tailwind utilities;
