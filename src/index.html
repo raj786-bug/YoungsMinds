@@ -18,7 +18,9 @@
             transform: rotate(0deg);
             transition: transform 0.5s ease; /* Added transition for smoother animation */
         }
- 
+ .hidden {
+  display: none;
+}
     </style>
   </head>
   <body>
@@ -82,17 +84,17 @@
                 <a href="#">About us</a>
             </li>
             <!-- Courses dropdown -->
-           <div class="group relative mx-3 md:mx-5 my-2 md:my-4 border rounded-2xl p-2 md:p-4 hover:bg-gray-200">
-    <button class="dropdown-btn">Courses
-        <i class="fa fa-caret-down"></i>
-    </button>
-    <ul class="dropdown-menu hidden mt-2">
-        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Designing</a></li>
-        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Coding</a></li>
-        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Robotics</a></li>
-        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">AI</a></li>
-    </ul>
-</div>
+        <li class="group relative mx-3 md:mx-5 my-2 md:my-4 border rounded-2xl p-2 md:p-4 hover:bg-gray-200">
+  <button class="dropdown-btn">Courses
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container hidden">
+    <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Designing</a></li>
+    <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Coding</a></li>
+    <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Robotics</a></li>
+    <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">AI</a></li>
+  </div>
+</li>
 
             <li class="mx-3 my-2 border rounded-2xl p-2 hover:bg-gray-300">
                 <a href="#">Blogs</a>
@@ -222,16 +224,16 @@
             menuIcon.classList.remove('rotate-90');
             menuIcon.classList.add('rotate-0');
         });
-    
-// Get the courses button and dropdown menu
-const coursesButton = document.querySelector('.dropdown-btn');
-const coursesMenu = document.querySelector('.dropdown-menu');
+  
+  const dropdownBtn = document.querySelector('.dropdown-btn');
+  const dropdownContainer = document.querySelector('.dropdown-container');
 
-// Add click event listener to the courses button
-coursesButton.addEventListener('click', function() {
-    // Toggle the hidden class on the dropdown menu
-    coursesMenu.classList.toggle('hidden');
-});
+  dropdownBtn.addEventListener('click', function() {
+    dropdownContainer.classList.toggle('hidden');
+  });
+
+
+
 
    
     </script>
