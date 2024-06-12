@@ -9,81 +9,107 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .rotate-90 {
+            transform: rotate(90deg);
+            transition: transform 0.5s ease; /* Added transition for smoother animation */
+        }
+        .rotate-0 {
+            transform: rotate(0deg);
+            transition: transform 0.5s ease; /* Added transition for smoother animation */
+        }
+ 
+    </style>
   </head>
   <body>
-    <header>
-      <div
-        class="w-full flex justify-between items-center px-4 md:px-8 py-4 md:py-8"
-      >
-        <div class="flex items-center">
-          <img
-            src="./primary_logo.png"
-            alt="coding logo"
-            class="h-12 md:h-16"
-          />
+     <!-- Navbar -->
+    <nav class="navbar fixed top-0 w-full bg-white shadow-md z-10">
+        <div class="container mx-auto px-4 md:px-8 py-4 md:py-8 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="./primary_logo.png" alt="coding logo" class="h-12 md:h-16" id="logo">
+            </div>
+            <div class="hidden md:flex items-center text-black font-semibold text-lg">
+                <ul class="flex">
+                    <li class="mx-3 md:mx-5 my-2 md:my-4 border rounded-2xl p-2 md:p-4 hover:bg-gray-200">
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="mx-3 md:mx-5 my-2 md:my-4 border rounded-2xl p-2 md:p-4 hover:bg-gray-200">
+                        <a href="#">About us</a>
+                    </li>
+                    <li class="group relative mx-3 md:mx-5 my-2 md:my-4 border rounded-2xl p-2 md:p-4 hover:bg-gray-200">
+                        <a href="#">Courses</a>
+                        <ul class="dropdown-menu absolute hidden bg-white shadow-lg rounded mt-2">
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Designing</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Coding</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Robotics</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">AI</a></li>
+                        </ul>
+                    </li>
+                    <li class="mx-3 md:mx-5 my-2 md:my-4 border rounded-2xl p-2 md:p-4 hover:bg-gray-200">
+                        <a href="#">Blogs</a>
+                    </li>
+                    <li class="text-red-800 mx-3 md:mx-5 my-2 md:my-4 border rounded-2xl p-2 md:p-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-500 hover:from-yellow-500 hover:via-yellow-600 hover:to-yellow-600">
+                        <a href="#">Book a FREE Trial</a>
+                    </li>
+                    <li class="mx-3 md:mx-5 my-2 md:my-4 border rounded-2xl p-2 md:p-4 hover:bg-gray-200">
+                        <a href="#">Login</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="md:hidden flex justify-end w-full">
+                <button id="mobile-menu-toggle" class="navbar-toggler flex items-center justify-center w-10 h-10 border border-transparent rounded-md text-gray-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-transform duration-500 transform">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="block h-6 w-6 rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
-        <ul
-          class="hidden md:flex items-center text-black font-semibold text-lg"
-        >
-          <li
-            class="mx-3 md:mx-5 my-2 md:my-4 border rounded-2xl p-2 md:p-4 hover:bg-gray-200"
-          >
-            <a href="">Home</a>
-          </li>
-          <li
-            class="mx-3 md:mx-5 my-2 md:my-4 border rounded-2xl p-2 md:p-4 hover:bg-gray-200"
-          >
-            <a href="">About us</a>
-          </li>
-          <li
-            class="mx-3 md:mx-5 my-2 md:my-4 border rounded-2xl p-2 md:p-4 hover:bg-gray-200"
-          >
-            <a href="">Our Courses</a>
-          </li>
-          <li
-            class="mx-3 md:mx-5 my-2 md:my-4 border rounded-2xl p-2 md:p-4 hover:bg-gray-200"
-          >
-            <a href="">Blogs</a>
-          </li>
-          <li
-            class="text-red-800 mx-3 md:mx-5 my-2 md:my-4 border rounded-2xl p-2 md:p-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-500 hover:from-yellow-500 hover:via-yellow-600 hover:to-yellow-600"
-          >
-            <a href="">Book a FREE Trial</a>
-          </li>
-          <li
-            class="mx-3 md:mx-5 my-2 md:my-4 border rounded-2xl p-2 md:p-4 hover:bg-gray-200"
-          >
-            <a href="">Login</a>
-          </li>
+    
+
+   <div id="mobile-menu" class="md:hidden bg-white fixed top-0 right-0 h-full w-64 shadow-lg z-50 hidden">
+    <div class="container mx-auto px-4 md:px-8 py-4">
+        <button id="mobile-menu-close" class="text-gray-600 focus:outline-none absolute top-4 right-4">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <ul class="text-black font-semibold text-lg mt-10">
+            <li class="mx-3 my-2 border rounded-2xl p-2 hover:bg-gray-300">
+                <a href="#">Home</a>
+            </li>
+            <li class="mx-3 my-2 border rounded-2xl p-2 hover:bg-gray-300">
+                <a href="#">About us</a>
+            </li>
+            <!-- Courses dropdown -->
+           <div class="group relative mx-3 md:mx-5 my-2 md:my-4 border rounded-2xl p-2 md:p-4 hover:bg-gray-200">
+    <button class="dropdown-btn">Courses
+        <i class="fa fa-caret-down"></i>
+    </button>
+    <ul class="dropdown-menu hidden mt-2">
+        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Designing</a></li>
+        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Coding</a></li>
+        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Robotics</a></li>
+        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">AI</a></li>
+    </ul>
+</div>
+
+            <li class="mx-3 my-2 border rounded-2xl p-2 hover:bg-gray-300">
+                <a href="#">Blogs</a>
+            </li>
+            <li class="text-red-800 mx-3 my-2 border rounded-2xl p-2 hover:bg-gray-300">
+                <a href="#">Book a FREE Trial</a>
+            </li>
+            <li class="mx-3 my-2 border rounded-2xl p-2 hover:bg-gray-300">
+                <a href="#">Login</a>
+            </li>
         </ul>
-     
-    </header>
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="md:hidden hidden bg-gray-200">
-      <ul class="text-black font-semibold text-lg">
-        <li class="mx-3 my-2 border rounded-2xl p-2 hover:bg-gray-300">
-          <a href="">Home</a>
-        </li>
-        <li class="mx-3 my-2 border rounded-2xl p-2 hover:bg-gray-300">
-          <a href="">About us</a>
-        </li>
-        <li class="mx-3 my-2 border rounded-2xl p-2 hover:bg-gray-300">
-          <a href="">Our Courses</a>
-        </li>
-        <li class="mx-3 my-2 border rounded-2xl p-2 hover:bg-gray-300">
-          <a href="">Blogs</a>
-        </li>
-        <li
-          class="text-red-800 mx-3 my-2 border rounded-2xl p-2 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-500 hover:from-yellow-500 hover:via-yellow-600 hover:to-yellow-600"
-        >
-          <a href="">Book a FREE Trial</a>
-        </li>
-        <li class="mx-3 my-2 border rounded-2xl p-2 hover:bg-gray-300">
-          <a href="">Login</a>
-        </li>
-      </ul>
     </div>
- <section>
+</div>
+
+</div>
+</nav>
+
   <div class="flex flex-col md:flex-row justify-center items-center px-10 md:px-56  shadow-lg">
     <div class="m-2 md:m-24 h-auto w-full  md:w-1/2 ">
       <h1 class="text-3xl md:text-6xl my-6 ">Word best robotic and ai class</h1>
@@ -133,24 +159,82 @@
   </div>
  </section>
  <section>
-  <div class="border-2 rounded-3xl  m-5">
-    <div class="border-1 border-red-950 bg-yellow-700 rounded-3xl grid grid-cols-3 gap-5 py-4">
-      <div class="w-1/5 mx-auto">
-        <i class="fa-solid fa-check border-2 p-2 bg-yellow-400 border-transparent rounded-full" style="color: #ffffff;"></i>
+ <section>
+  <div class="flex flex-col justify-center md:flex-row md:justify-center md:h-auto">
+    <div class="flex flex-col w-full md:w-1/2 mx-auto md:items-end px-4">
+      <div class="border-2 rounded-3xl m-2 md:m-5 w-full md:w-2/3">
+        <div class="border-1 border-red-950 bg-yellow-100 rounded-t-3xl grid grid-cols-3 gap-2 md:gap-5 py-4 items-center">
+          <div class="w-1/10 mx-auto">
+            <i class="fa-solid fa-check border-2 p-2 bg-yellow-400 border-transparent rounded-full" style="color: #ffffff;"></i>
+          </div>
+          <div class="w-8/10 text-left text-base">Highly interactive and fun</div>
+          <div class="w-1/10 mx-auto"><i class="fa-solid fa-chevron-down"></i></div>
+        </div>
+        <div class="rounded-b-3xl p-2 md:p-3">Regular classes are filled with quizzes, games, activities and challenges to ensure active participation of the kid</div>
       </div>
-      <div class="w-3/5 text-left"> text</div>
-      <div class="w-1/5 mx-auto"> &rarr;</div>
+      <div class="border-2 rounded-3xl m-2 md:m-5 w-full md:w-2/3">
+        <div class="border-1 border-red-950 bg-yellow-100 rounded-t-3xl grid grid-cols-3 gap-2 md:gap-5 py-4 items-center">
+          <div class="w-1/10 mx-auto">
+            <i class="fa-solid fa-check border-2 p-2 bg-yellow-400 border-transparent rounded-full" style="color: #ffffff;"></i>
+          </div>
+          <div class="w-8/10 text-left text-base">Highly interactive and fun</div>
+          <div class="w-1/10 mx-auto"><i class="fa-solid fa-chevron-down"></i></div>
+        </div>
+        <div class="rounded-b-3xl p-2 md:p-3">Regular classes are filled with quizzes, games, activities and challenges to ensure active participation of the kid</div>
+      </div>
+      <div class="border-2 rounded-3xl m-2 md:m-5 w-full md:w-2/3">
+        <div class="border-1 border-red-950 bg-yellow-100 rounded-t-3xl grid grid-cols-3 gap-2 md:gap-5 py-4 items-center">
+          <div class="w-1/10 mx-auto">
+            <i class="fa-solid fa-check border-2 p-2 bg-yellow-400 border-transparent rounded-full" style="color: #ffffff;"></i>
+          </div>
+          <div class="w-8/10 text-left text-base">Highly interactive and fun</div>
+          <div class="w-1/10 mx-auto"><i class="fa-solid fa-chevron-down"></i></div>
+        </div>
+        <div class="rounded-b-3xl p-2 md:p-3">Regular classes are filled with quizzes, games, activities and challenges to ensure active participation of the kid</div>
+      </div>
     </div>
-    <div class="rounded-b-3xl p-3">Regular classes are filled with quizzes, games, activities and challenges to ensure active participation of the kid</div>
+    <div class="w-full md:w-1/2 mx-auto md:h-auto">
+      <img src="./typical_class.png" alt="" class="w-full object-cover md:h-full">
+    </div>
   </div>
- </section>
-    <script>
-      // Toggle mobile menu
-      document
-        .getElementById("mobile-menu-button")
-        .addEventListener("click", function () {
-          document.getElementById("mobile-menu").classList.toggle("hidden");
+</section>
+ <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            var mobileMenu = document.getElementById('mobile-menu');
+            var menuIcon = document.querySelector('#mobile-menu-toggle svg');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.remove('rotate-0');
+                menuIcon.classList.add('rotate-90');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('rotate-90');
+                menuIcon.classList.add('rotate-0');
+            }
         });
+
+        document.getElementById('mobile-menu-close').addEventListener('click', function() {
+            var mobileMenu = document.getElementById('mobile-menu');
+            var menuIcon = document.querySelector('#mobile-menu-toggle svg');
+
+            mobileMenu.classList.add('hidden');
+            menuIcon.classList.remove('rotate-90');
+            menuIcon.classList.add('rotate-0');
+        });
+    
+// Get the courses button and dropdown menu
+const coursesButton = document.querySelector('.dropdown-btn');
+const coursesMenu = document.querySelector('.dropdown-menu');
+
+// Add click event listener to the courses button
+coursesButton.addEventListener('click', function() {
+    // Toggle the hidden class on the dropdown menu
+    coursesMenu.classList.toggle('hidden');
+});
+
+   
     </script>
+
   </body>
 </html>
